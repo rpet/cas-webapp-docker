@@ -1,11 +1,12 @@
-FROM centos:centos7
+FROM debian:jessie
 
-MAINTAINER Apereo Foundation
+MAINTAINER Rafael Varela
 
 ENV PATH=$PATH:$JRE_HOME/bin
 
-RUN yum -y install wget tar git-all \
-    && yum -y clean all
+RUN apt-get update \
+    && apt-get install -y wget tar git-all \
+    && apt-get clean
 
 # Download Azul Java, verify the hash, and install \
 RUN set -x; \
